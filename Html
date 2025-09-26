@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Chefe Rápido - Receitas IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Chefe Rápido - Receitas IA</h1>
+  <input type="text" id="userInput" placeholder="Digite a receita que procura" size="50">
+  <button onclick="enviarPrompt()">Buscar</button>
+
+  <div id="response"></div>
+
+  <!-- Botão admin oculto -->
+  <button id="adminBtn" onclick="adminFunc()">Admin</button>
+
+  <script>
+    async function enviarPrompt() {
+      const userInput = document.getElementById("userInput").value;
+      const responseDiv = document.getElementById("response");
+      responseDiv.textContent = "Carregando...";
+
+      try {
+        // Chamada para seu backend seguro
+        const res = await fetch("https://SEU-BACKEND.com/receita", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: `Me dê receitas curtas e simples de: ${userInput} com imagens, apenas poucas informações de cada vez.` })
+        });
+
+        const data = await res.json();
+        responseDiv.innerHTML = data.output || "Sem resposta da IA";
+
+      } catch (err) {
+        responseDiv.textContent = "Erro ao conectar com o servidor: " + err.message;
+      }
+    }
+
+    // Função do botão admin
+    function adminFunc() {
+      alert("Bem-vindo, Admin!");
+    }
+
+    // Mostrar botão admin apenas se email for o seu
+    const emailAdmin = "dinocossa86@gmail.com";
+    const usuarioAtual = prompt("Digite seu email para acessar o admin:");
+    if(usuarioAtual === emailAdmin) {
+      document.getElementById("adminBtn").style.display = "inline-block";
+    }
+  </script>
+</body>
+</html>
