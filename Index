@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Chefe Rápido - Receitas IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Chefe Rápido - Receitas IA</h1>
+  <input type="text" id="userInput" placeholder="Digite a receita que procura" size="50">
+  <button onclick="enviarPrompt()">Buscar</button>
+
+  <div id="response"></div>
+
+  <!-- Botão admin oculto -->
+  <button id="adminBtn" onclick="adminFunc()">Admin</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
