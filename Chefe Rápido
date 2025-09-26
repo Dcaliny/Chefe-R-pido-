@@ -1,0 +1,8 @@
+Chefe-Rapido/
+│
+├─ frontend/
+│   ├─ index.html
+│   └─ style.css
+│
+└─ backend/
+    └─ server.js
